@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario MySQL DATE y DAY</title>
+    <style>
+            body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .container {
+        max-width: 800px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+    }
+    .question {
+        margin-bottom: 20px;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        margin-bottom: 10px;
+    }
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+    .result {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    .correct {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .incorrect {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+    .examples {
+        margin-top: 40px;
+    }
+
+    /* Media queries */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+        .btn {
+            font-size: 14px;
+        }
+    }
+
+    @media (min-width: 601px) and (max-width: 1024px) {
+        .container {
+            max-width: 600px;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .container {
+            max-width: 800px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cuestionario MySQL DATE y DAY</h1>
+        <div class="questions">
+            <!-- Pregunta 1 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DAY(DATE_ADD('2023-01-15', INTERVAL 10 DAY))</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q1_a1" name="q1" value="25">
+                        <label for="q1_a1">25</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1_a2" name="q1" value="24">
+                        <label for="q1_a2">24</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1_a3" name="q1" value="26">
+                        <label for="q1_a3">26</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1_a4" name="q1" value="23">
+                        <label for="q1_a4">23</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 2 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_SUB('2024-03-01', INTERVAL 1 MONTH)</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q2_a1" name="q2" value="2024-02-01">
+                        <label for="q2_a1">2024-02-01</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q2_a2" name="q2" value="2024-02-29">
+                        <label for="q2_a2">2024-02-29</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q2_a3" name="q2" value="2024-01-31">
+                        <label for="q2_a3">2024-01-31</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q2_a4" name="q2" value="2024-02-28">
+                        <label for="q2_a4">2024-02-28</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 3 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DAY(LAST_DAY('2023-02-10'))</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q3_a1" name="q3" value="28">
+                        <label for="q3_a1">28</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q3_a2" name="q3" value="29">
+                        <label for="q3_a2">29</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q3_a3" name="q3" value="30">
+                        <label for="q3_a3">30</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q3_a4" name="q3" value="31">
+                        <label for="q3_a4">31</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 4 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_FORMAT('2024-04-21', '%d')</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q4_a1" name="q4" value="21">
+                        <label for="q4_a1">21</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q4_a2" name="q4" value="20">
+                        <label for="q4_a2">20</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q4_a3" name="q4" value="19">
+                        <label for="q4_a3">19</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q4_a4" name="q4" value="18">
+                        <label for="q4_a4">18</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 5 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DAY(DATE_SUB('2022-05-15', INTERVAL 15 DAY))</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q5_a1" name="q5" value="30">
+                        <label for="q5_a1">30</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q5_a2" name="q5" value="1">
+                        <label for="q5_a2">1</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q5_a3" name="q5" value="31">
+                        <label for="q5_a3">31</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q5_a4" name="q5" value="14">
+                        <label for="q5_a4">14</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 6 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_ADD('2021-07-10', INTERVAL 1 YEAR)</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q6_a1" name="q6" value="2022-07-10">
+                        <label for="q6_a1">2022-07-10</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q6_a2" name="q6" value="2021-07-10">
+                        <label for="q6_a2">2021-07-10</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q6_a3" name="q6" value="2023-07-10">
+                        <label for="q6_a3">2023-07-10</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q6_a4" name="q6" value="2022-08-10">
+                        <label for="q6_a4">2022-08-10</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 7 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>LAST_DAY('2020-02-15')</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q7_a1" name="q7" value="2020-02-29">
+                        <label for="q7_a1">2020-02-29</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q7_a2" name="q7" value="2020-02-28">
+                        <label for="q7_a2">2020-02-28</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q7_a3" name="q7" value="2020-02-27">
+                        <label for="q7_a3">2020-02-27</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q7_a4" name="q7" value="2020-02-26">
+                        <label for="q7_a4">2020-02-26</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 8 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_FORMAT('2019-11-11', '%Y-%m-%d')</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q8_a1" name="q8" value="2019-11-11">
+                        <label for="q8_a1">2019-11-11</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q8_a2" name="q8" value="11-11-2019">
+                        <label for="q8_a2">11-11-2019</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q8_a3" name="q8" value="2019-10-11">
+                        <label for="q8_a3">2019-10-11</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q8_a4" name="q8" value="2019-11-10">
+                        <label for="q8_a4">2019-11-10</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 9 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DAYOFWEEK('2024-01-01')</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q9_a1" name="q9" value="2">
+                        <label for="q9_a1">2</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q9_a2" name="q9" value="3">
+                        <label for="q9_a2">3</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q9_a3" name="q9" value="1">
+                        <label for="q9_a3">1</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q9_a4" name="q9" value="4">
+                        <label for="q9_a4">4</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 10 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_ADD('2023-08-20', INTERVAL 100 DAY)</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q10_a1" name="q10" value="2023-11-28">
+                        <label for="q10_a1">2023-11-28</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q10_a2" name="q10" value="2023-11-29">
+                        <label for="q10_a2">2023-11-29</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q10_a3" name="q10" value="2023-12-01">
+                        <label for="q10_a3">2023-12-01</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q10_a4" name="q10" value="2023-12-02">
+                        <label for="q10_a4">2023-12-02</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 11 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DAYNAME('2022-12-25')</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q11_a1" name="q11" value="Sunday">
+                        <label for="q11_a1">Sunday</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q11_a2" name="q11" value="Monday">
+                        <label for="q11_a2">Monday</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q11_a3" name="q11" value="Saturday">
+                        <label for="q11_a3">Saturday</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q11_a4" name="q11" value="Friday">
+                        <label for="q11_a4">Friday</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 12 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_ADD('2021-01-31', INTERVAL 1 MONTH)</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q12_a1" name="q12" value="2021-02-28">
+                        <label for="q12_a1">2021-02-28</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q12_a2" name="q12" value="2021-03-03">
+                        <label for="q12_a2">2021-03-03</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q12_a3" name="q12" value="2021-03-02">
+                        <label for="q12_a3">2021-03-02</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q12_a4" name="q12" value="2021-03-01">
+                        <label for="q12_a4">2021-03-01</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 13 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DAYOFYEAR('2022-12-31')</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q13_a1" name="q13" value="365">
+                        <label for="q13_a1">365</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q13_a2" name="q13" value="364">
+                        <label for="q13_a2">364</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q13_a3" name="q13" value="366">
+                        <label for="q13_a3">366</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q13_a4" name="q13" value="363">
+                        <label for="q13_a4">363</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 14 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_SUB('2023-10-01', INTERVAL 15 DAY)</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q14_a1" name="q14" value="2023-09-16">
+                        <label for="q14_a1">2023-09-16</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q14_a2" name="q14" value="2023-09-15">
+                        <label for="q14_a2">2023-09-15</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q14_a3" name="q14" value="2023-09-14">
+                        <label for="q14_a3">2023-09-14</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q14_a4" name="q14" value="2023-09-17">
+                        <label for="q14_a4">2023-09-17</label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Pregunta 15 -->
+            <div class="question">
+                <p>¿Cuál es el resultado de <code>DATE_FORMAT('2025-06-30', '%W')</code>?</p>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q15_a1" name="q15" value="Monday">
+                        <label for="q15_a1">Monday</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q15_a2" name="q15" value="Tuesday">
+                        <label for="q15_a2">Tuesday</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q15_a3" name="q15" value="Sunday">
+                        <label for="q15_a3">Sunday</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q15_a4" name="q15" value="Friday">
+                        <label for="q15_a4">Friday</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <button class="btn" onclick="checkAnswers()">Enviar</button>
+        <div class="result" id="result"></div>
+        <div class="examples">
+            <h2>Ejemplos y Ejercicios</h2>
+            <p><strong>Ejemplo 1:</strong> Utilizando <code>DATE_ADD</code> y <code>DAY</code> para calcular días.</p>
+            <p><code>SELECT DAY(DATE_ADD('2023-01-01', INTERVAL 10 DAY));</code></p>
+            <p>Resultado: 11</p>
+            <p><strong>Ejercicio 1:</strong> ¿Cuál es el día después de añadir 45 días a la fecha '2022-02-15'?</p>
+            <p><strong>Ejemplo 2:</strong> Utilizando <code>DATE_FORMAT</code> para dar formato a fechas.</p>
+            <p><code>SELECT DATE_FORMAT('2023-12-25', '%d %M %Y');</code></p>
+            <p>Resultado: 25 December 2023</p>
+            <p><strong>Ejercicio 2:</strong> Formatea la fecha '2024-05-20' para que se muestre como '20th of May, 2024'.</p>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: '25',
+                q2: '2024-02-01',
+                q3: '28',
+                q4: '21',
+                q5: '30',
+                q6: '2022-07-10',
+                q7: '2020-02-29',
+                q8: '2019-11-11',
+                q9: '2',
+                q10: '2023-11-28',
+                q11: 'Sunday',
+                q12: '2021-02-28',
+                q13: '365',
+                q14: '2023-09-16',
+                q15: 'Monday'
+            };
+
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+
+            for (const [question, correctAnswer] of Object.entries(correctAnswers)) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            if (score === totalQuestions) {
+                resultDiv.textContent = `¡Perfecto! Obtuviste ${score} de ${totalQuestions} respuestas correctas.`;
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = `Obtuviste ${score} de ${totalQuestions} respuestas correctas. Sigue practicando.`;
+                resultDiv.className = 'result incorrect';
+            }
+        }
+    </script>
+</body>
+</html>
